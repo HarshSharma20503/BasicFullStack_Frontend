@@ -12,7 +12,7 @@ const HomePage = () => {
   const getProducts = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get("http://localhost:3000/api/products");
+      const response = await axios.get("https://basic-fullstack-backend.onrender.com/api/products");
       console.log(response.data)
       setProducts(response.data);
       setIsLoading(false);
@@ -31,12 +31,12 @@ const HomePage = () => {
       <div>
         <Link
           to="/create"
-          className="inline-block mt-4 shadow-md bg-blue-700 text-white rounded-sm px-4 py-2 font-bold hover:bg-blue-600 hover:cursor-pointer"
+          className="inline-block px-4 py-2 mt-4 font-bold text-white bg-blue-700 rounded-sm shadow-md hover:bg-blue-600 hover:cursor-pointer"
         >
           Create a Product
         </Link>
       </div>
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-5">
+      <div className="grid grid-cols-2 gap-4 mt-5 lg:grid-cols-4">
         {isLoading ? (
           "Loading"
         ) : (
@@ -54,7 +54,7 @@ const HomePage = () => {
                 })}
               </>
             ) : (
-              <div className="mt-4 bg-gray-800 text-white font-serif p-4">
+              <div className="p-4 mt-4 font-serif text-white bg-gray-800">
                 There is no product
               </div>
             )}

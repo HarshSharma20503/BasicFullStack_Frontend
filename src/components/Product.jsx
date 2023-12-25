@@ -14,7 +14,7 @@ const Product = ({ product, getProducts }) => {
 
     if (result.isConfirmed) {
       try {
-        await axios.delete(`http://localhost:3000/api/products/${id}`);
+        await axios.delete(`https://basic-fullstack-backend.onrender.com/api/products/${id}`);
         toast.success("Delete a Product Successfully");
         getProducts();
       } catch (error) {
@@ -24,23 +24,23 @@ const Product = ({ product, getProducts }) => {
   };
 
   return (
-    <div className="bg-white rounded shadow-lg overflow-hidden">
-      <img src={product.image} className="w-full h-28 object-cover" />
+    <div className="overflow-hidden bg-white rounded shadow-lg">
+      <img src={product.image} className="object-cover w-full h-28" />
       <div className="px-4 pt-2 pb-4">
-        <h2 className="text font-semibold">{product.name}</h2>
+        <h2 className="font-semibold text">{product.name}</h2>
         <div className="text-sm">Quantiy: {product.quantity}</div>
         <div className="text-sm">Price: ${product.price}</div>
 
-        <div className="mt-2 flex gap-4">
+        <div className="flex gap-4 mt-2">
           <Link
             to={`/edit/${product._id}`}
-            className="inline-block w-full text-center shadow-md text-sm bg-gray-700 text-white rounded-sm px-4 py-1 font-bold hover:bg-gray-600 hover:cursor-pointer"
+            className="inline-block w-full px-4 py-1 text-sm font-bold text-center text-white bg-gray-700 rounded-sm shadow-md hover:bg-gray-600 hover:cursor-pointer"
           >
             Edit
           </Link>
           <button
             onClick={() => deleteProduct(product._id)}
-            className="inline-block w-full text-center shadow-md text-sm bg-red-700 text-white rounded-sm px-4 py-1 font-bold hover:bg-red-600 hover:cursor-pointer"
+            className="inline-block w-full px-4 py-1 text-sm font-bold text-center text-white bg-red-700 rounded-sm shadow-md hover:bg-red-600 hover:cursor-pointer"
           >
             Delete
           </button>

@@ -21,7 +21,7 @@ const CreatePage = () => {
         }
         try {
             setIsLoading(true);
-            const response = await axios.post("http://localhost:3000/api/products", {name: name, quantiy: quantity, price: price, image: image});
+            const response = await axios.post("https://basic-fullstack-backend.onrender.com/api/products", {name: name, quantiy: quantity, price: price, image: image});
             toast.success(`Save ${response.data.name} Successfully`);
             setIsLoading(false);
             navigate("/");
@@ -33,30 +33,30 @@ const CreatePage = () => {
 
 
     return (
-        <div className="max-w-lg bg-white shadow-lg mx-auto p-7 rounded mt-6">
-            <h2 className="font-semibold text-2xl mb-4 block text-center">
+        <div className="max-w-lg mx-auto mt-6 bg-white rounded shadow-lg p-7">
+            <h2 className="block mb-4 text-2xl font-semibold text-center">
                 Create a Product
             </h2>
             <form onSubmit={saveProduct}>
                 <div className="space-y-2">
                     <div>
-                        <label className="text-gray-600 mb-2 block font-semibold">Name</label>
-                        <input type="text" value={name} onChange={(e) => setName(e.target.value)} className="w-full block border p-3 text-gray-600  rounded focus:outline-none focus:shadow-outline focus:border-blue-200 placeholder-gray-400" placeholder="Name" />
+                        <label className="block mb-2 font-semibold text-gray-600">Name</label>
+                        <input type="text" value={name} onChange={(e) => setName(e.target.value)} className="block w-full p-3 text-gray-600 placeholder-gray-400 border rounded focus:outline-none focus:shadow-outline focus:border-blue-200" placeholder="Name" />
                     </div>
                     <div>
-                        <label className="text-gray-600 mb-2 block font-semibold">Quantity</label>
-                        <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} className="w-full block border p-3 text-gray-600  rounded focus:outline-none focus:shadow-outline focus:border-blue-200 placeholder-gray-400" placeholder="Quantity" />
+                        <label className="block mb-2 font-semibold text-gray-600">Quantity</label>
+                        <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} className="block w-full p-3 text-gray-600 placeholder-gray-400 border rounded focus:outline-none focus:shadow-outline focus:border-blue-200" placeholder="Quantity" />
                     </div>
                     <div>
-                        <label className="text-gray-600 mb-2 block font-semibold">Price</label>
-                        <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} className="w-full block border p-3 text-gray-600  rounded focus:outline-none focus:shadow-outline focus:border-blue-200 placeholder-gray-400" placeholder="Price" />
+                        <label className="block mb-2 font-semibold text-gray-600">Price</label>
+                        <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} className="block w-full p-3 text-gray-600 placeholder-gray-400 border rounded focus:outline-none focus:shadow-outline focus:border-blue-200" placeholder="Price" />
                     </div>
                     <div>
-                        <label className="text-gray-600 mb-2 block font-semibold">Image URL</label>
-                        <input type="text" value={image} onChange={(e) => setImage(e.target.value)} className="w-full block border p-3 text-gray-600  rounded focus:outline-none focus:shadow-outline focus:border-blue-200 placeholder-gray-400" placeholder="Image URL" />
+                        <label className="block mb-2 font-semibold text-gray-600">Image URL</label>
+                        <input type="text" value={image} onChange={(e) => setImage(e.target.value)} className="block w-full p-3 text-gray-600 placeholder-gray-400 border rounded focus:outline-none focus:shadow-outline focus:border-blue-200" placeholder="Image URL" />
                     </div>
                     <div>
-                        { !isLoading &&  (<button className="block w-full mt-6 bg-blue-700 text-white rounded-sm px-4 py-2 font-bold hover:bg-blue-600 hover:cursor-pointer">Save</button>)}
+                        { !isLoading &&  (<button className="block w-full px-4 py-2 mt-6 font-bold text-white bg-blue-700 rounded-sm hover:bg-blue-600 hover:cursor-pointer">Save</button>)}
                         
                     </div>
                 </div>

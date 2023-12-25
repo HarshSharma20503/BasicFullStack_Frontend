@@ -18,7 +18,7 @@ const EditPage = () => {
   const getProduct = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get(`http://localhost:3000/api/products/${id}`);
+      const response = await axios.get(`https://basic-fullstack-backend.onrender.com/api/products/${id}`);
       setProduct({
         name: response.data.name,
         quantity: response.data.quantity,
@@ -35,7 +35,7 @@ const EditPage = () => {
   const updateProduct = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:3000/api/products/${id}`, product);
+      await axios.put(`https://basic-fullstack-backend.onrender.com/api/products/${id}`, product);
       toast.success("Updated a product successfully");
       navigate("/");
     } catch (error) {
@@ -48,8 +48,8 @@ const EditPage = () => {
   }, []);
 
   return (
-    <div className="max-w-lg bg-white shadow-lg mx-auto p-7 rounded mt-6">
-      <h2 className="font-semibold text-2xl mb-4 block text-center">
+    <div className="max-w-lg mx-auto mt-6 bg-white rounded shadow-lg p-7">
+      <h2 className="block mb-4 text-2xl font-semibold text-center">
         Edit a Product
       </h2>
       {isLoading ? (
@@ -59,7 +59,7 @@ const EditPage = () => {
           <form onSubmit={updateProduct}>
             <div className="space-y-2">
               <div>
-                <label className="text-gray-600 mb-2 block font-semibold">
+                <label className="block mb-2 font-semibold text-gray-600">
                   Name
                 </label>
                 <input
@@ -68,12 +68,12 @@ const EditPage = () => {
                   onChange={(e) =>
                     setProduct({ ...product, name: e.target.value })
                   }
-                  className="w-full block border p-3 text-gray-600  rounded focus:outline-none focus:shadow-outline focus:border-blue-200 placeholder-gray-400"
+                  className="block w-full p-3 text-gray-600 placeholder-gray-400 border rounded focus:outline-none focus:shadow-outline focus:border-blue-200"
                   placeholder="Name"
                 />
               </div>
               <div>
-                <label className="text-gray-600 mb-2 block font-semibold">
+                <label className="block mb-2 font-semibold text-gray-600">
                   Quantity
                 </label>
                 <input
@@ -82,12 +82,12 @@ const EditPage = () => {
                   onChange={(e) =>
                     setProduct({ ...product, quantity: e.target.value })
                   }
-                  className="w-full block border p-3 text-gray-600  rounded focus:outline-none focus:shadow-outline focus:border-blue-200 placeholder-gray-400"
+                  className="block w-full p-3 text-gray-600 placeholder-gray-400 border rounded focus:outline-none focus:shadow-outline focus:border-blue-200"
                   placeholder="Quantity"
                 />
               </div>
               <div>
-                <label className="text-gray-600 mb-2 block font-semibold">
+                <label className="block mb-2 font-semibold text-gray-600">
                   Price
                 </label>
                 <input
@@ -96,12 +96,12 @@ const EditPage = () => {
                   onChange={(e) =>
                     setProduct({ ...product, price: e.target.value })
                   }
-                  className="w-full block border p-3 text-gray-600  rounded focus:outline-none focus:shadow-outline focus:border-blue-200 placeholder-gray-400"
+                  className="block w-full p-3 text-gray-600 placeholder-gray-400 border rounded focus:outline-none focus:shadow-outline focus:border-blue-200"
                   placeholder="Price"
                 />
               </div>
               <div>
-                <label className="text-gray-600 mb-2 block font-semibold">
+                <label className="block mb-2 font-semibold text-gray-600">
                   Image URL
                 </label>
                 <input
@@ -110,18 +110,18 @@ const EditPage = () => {
                   onChange={(e) =>
                     setProduct({ ...product, image: e.target.value })
                   }
-                  className="w-full block border p-3 text-gray-600  rounded focus:outline-none focus:shadow-outline focus:border-blue-200 placeholder-gray-400"
+                  className="block w-full p-3 text-gray-600 placeholder-gray-400 border rounded focus:outline-none focus:shadow-outline focus:border-blue-200"
                   placeholder="Image URL"
                 />
 
                 {product.image && (
-                  <div className="w-1/2 border rounded p-2 mt-4 ">
+                  <div className="w-1/2 p-2 mt-4 border rounded ">
                     <img className="w-full" src={product.image} />
                   </div>
                 )}
               </div>
               <div>
-                <button className="block w-full mt-6 bg-blue-700 text-white rounded-sm px-4 py-2 font-bold hover:bg-blue-600 hover:cursor-pointer">
+                <button className="block w-full px-4 py-2 mt-6 font-bold text-white bg-blue-700 rounded-sm hover:bg-blue-600 hover:cursor-pointer">
                   Update
                 </button>
               </div>
